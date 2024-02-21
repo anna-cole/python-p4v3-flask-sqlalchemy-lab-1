@@ -37,12 +37,13 @@ def earthquake_by_id(id):
 def earthquake_by_magnitude(magnitude):
     earthquakes_list = []
     earthquakes = Earthquake.query.filter(Earthquake.magnitude >= magnitude).all()
-    # breakpoint()
     for earthquake in earthquakes:
         earthquake_dict = earthquake.to_dict()
         earthquakes_list.append(earthquake_dict)
     body = {'count': len(earthquakes_list), 'quakes': earthquakes_list}
-    return make_response(body, 200)
     
+    return make_response(body, 200)
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
+
